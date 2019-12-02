@@ -44,16 +44,16 @@ public class ProbeHashMap<K,V> extends AbstractHashMap<K,V> {
 //		Si empieza a funcionar raro  borra esto que fue lo que le añadi del double hash,
 //		porque antes de añadir esto estaba funcinando bien.
 //		System.out.println("Original --> " + h);
-//		int secHash = findSecondHash(h, k);
-//		for(int i = 0; i < table.length; i++) {
-//			System.out.println(table[i]);
-//			System.out.println(i);
-//		}
-//		
-//		System.out.println("SecondHash pos --> " + secHash);
-//		
-//		if(secHash > -1)
-//			j = secHash;
+		int secHash = findSecondHash(h, k);
+		for(int i = 0; i < table.length; i++) {
+			System.out.println(table[i]);
+			System.out.println(i);
+		}
+		
+		System.out.println("SecondHash pos --> " + secHash);
+		
+		if(secHash > -1)
+			j = secHash;
 		
 //-----------------------------------------------------------------------------------------------------------------------		
 		do {
@@ -132,7 +132,7 @@ public class ProbeHashMap<K,V> extends AbstractHashMap<K,V> {
 				if(avail == -1)
 					avail = j;
 				if(table[newHash] == null) {
-					return newHash;
+					break;
 				}
 				
 			}
@@ -186,7 +186,5 @@ public class ProbeHashMap<K,V> extends AbstractHashMap<K,V> {
 			toRet.add(value);
 		}
 		return toRet;
-	}
-	
-	
+	}	
 }
